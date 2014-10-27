@@ -13,12 +13,11 @@ describe("Tags", function(){
             var args = ["--depth=4", "--hello=world"];
             var defaults = { depth:2, foo: "bar"};
             var results = tags.parse(args, defaults);
-            var expexted = {
-                depth: 4
+            var expected = {
+                  depth: 4      //  <-- this one is overlap with test case
                 , foo: "bar"
                 , hello: "world"
             };
-
             expect(results).to.deep.equal(expected);  // use deep to match object
         });
     });

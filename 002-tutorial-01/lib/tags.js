@@ -1,9 +1,14 @@
 exports = module.exports = {};
 
-exports.parse = function(args){
+exports.parse = function(args, defaults){
     var options = {};
+    // make sure it is an object
+    if (typeof defaults === "object" && !( defaults instanceof Array )) {
+        options = defaults;
+    }
+
     for (var i in args){
-        var arg = args[i];;
+        var arg = args[i];
         // check for long formed tag
         // starting and including postion 0 for the length of 2
         if (arg.substr(0,2) === "--" ){

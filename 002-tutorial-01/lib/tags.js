@@ -1,6 +1,8 @@
 exports = module.exports = {};
 
 exports.parse = function(args, defaults){
+    // expect args to be [],  default to be {}
+
     var options = {};
     // make sure it is an object
     if (typeof defaults === "object" && !( defaults instanceof Array )) {
@@ -9,6 +11,16 @@ exports.parse = function(args, defaults){
 
     for (var i in args){
         var arg = args[i];
+
+        if ( arg.charAt(0) === "-" && arg.charAt(1) != "-" )  { // first char is "-" but second is not "-"
+            arg = arg.substr(1);                 // discard the initial "-"
+            if (arg.indexOf("=") !== -1 ) {      // if "=" exist then
+
+
+            }
+            return options;
+        }
+        /*
         if (arg.substr(0,2) === "--" ){           // check to see the first 2 chars is "--", if so this is long formed tag
             arg = arg.substr(2)                   // if it is long form tag save chas after "--" in arg
             if (arg.indexOf("=") !== -1 ) {       // if one or more delimiter ("=") exsits then
@@ -24,6 +36,7 @@ exports.parse = function(args, defaults){
                                                   // it is then default to boolean "true"
             }
         }
+        */
     }
     return options;
 };

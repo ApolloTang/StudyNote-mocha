@@ -15,7 +15,10 @@ exports.parse = function(args, defaults){
         if ( arg.charAt(0) === "-" && arg.charAt(1) != "-" )  { // first char is "-" but second is not "-"
             arg = arg.substr(1);                 // discard the initial "-"
             if (arg.indexOf("=") !== -1 ) {      // if "=" exist then
-
+                arg = arg.split("=");
+                var key = arg.shift();
+                var value = arg.joint("=");
+                if ( //)
 
             }
             return options;
@@ -27,7 +30,7 @@ exports.parse = function(args, defaults){
                 arg = arg.split("=");             //    break string into fracgments at "=", fragments hold in array "arg"
                 var key = arg.shift();            // get the first one, which is the key, fragments left in arg is the value
                 var value = arg.join("=");        // second "=" is part of value, so concatenate all fragment into 1 piece
-                if ( /^[0-9]+$/.test(value) ) {   // if value is type string and one or more digits only than
+                if ( /^[0-9]+$/.test(value) ) {   // if string contain all digit charecters
                     value = parseInt(value, 10);  //      cast into integer of base 10
                 }
                 options[key] = value;             // store k-v pair in objected call options

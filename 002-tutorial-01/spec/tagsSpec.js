@@ -31,6 +31,14 @@ describe("Tags", function(){
         });
 
         it("should accept short formed tags", function(){
+            var args = ["-sd=4", "-h=world"];
+            var results = tags.parse(args);
+
+            expect(results).to.have.a.property("sd", 4);
+            expect(results).to.have.a.property("h", "world");
+        });
+
+        it("should accept short formed tags, and short form tag w/o value", function(){
             var args = ["-sd=4", "-h"];
             var replacements = {
                   s: "searchContents"
@@ -47,8 +55,8 @@ describe("Tags", function(){
             };
 
             expect(results).to.deep.equal(expected);j
+        });
 
-        })
 
     });
 });
